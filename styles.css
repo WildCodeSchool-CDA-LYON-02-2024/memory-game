@@ -1,0 +1,103 @@
+@font-face {
+    font-family: Cookies;
+    src: url("./assets/fonts/Cookies-g1XR.ttf");
+}
+
+@font-face {
+    font-family: Holy;
+    src: url("./assets/fonts/HolyCookDemo-gxnB3.otf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Holy, sans-serif;
+    font-size: 1.5rem;
+}
+
+body {
+    background-image: linear-gradient(to left, #b504a0, #d80081, #eb005f, #f12e3c, #eb5712);
+}
+
+.header {
+    text-align: center;
+    margin: 20px 0;
+
+    h1 {
+        font-size: 3rem;
+        font-family: Cookies, sans-serif;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+
+    .score {
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    .score p {
+        margin-left: 10px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+
+    .memory-card {
+        display: flex;
+        perspective: 1000px;
+        transition: transform 0.2s ease-out;
+
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .double-face {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        transform-style: preserve-3d; 
+        will-change: transform;
+        transition: transform 0.6s;
+        box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+        pointer-events: none;
+    }
+
+    .front-face, 
+    .back-face {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+    }
+
+    .active {
+        transform: rotateY(180deg);
+    }
+
+    .front-face {
+        transform: rotateY(180deg);
+    }
+
+    .back-face {
+        backface-visibility: hidden;
+    }
+}
